@@ -53,16 +53,32 @@ The original `|a, b, sum|` row delimiters from the first sketch conflict with Ru
 
 ## Mocking via `provided`
 
-Midje's `provided` redefines functions inside one fact. Rust can't do that dynamically, so the library only supports it for **trait objects passed as dependencies** — the idiomatic mock point. A `provided!` macro generates a one-shot stub:
+Midje's `provided` redefines functions inside one fact. Rust can't do that dynamically, so the library only supports it for **trait objects passed as dependencies** — the idiomatic mock point. Free functions are out of scope — the library steers users to trait-based seams rather than pretending Rust has `with-redefs`.
+
+Two macros cooperate:
 
 ```rust
-fact!("greets using clock",
-    greet(&clock) => "Good morning",
-    provided!(clock.now() => hour(8))
-);
+mockable! {
+    pub trait Clock as ClockMock {
+        fn now(&self) -> u32;
+        fn tzname(&self) -> String;
+    }
+}
+
+#[test]
+fn greets_in_the_morning() {
+    let clock = ClockMock::new();
+    provided! {
+        clock.now() => 8;
+        clock.tzname() => "UTC".to_string();
+    }
+    fact!(greet(&clock) => "Good morning");
+}
 ```
 
-Under the hood, `provided!` builds a `Clock` mock (via `mockall`-style generation or a `#[mockable]` attribute on the trait) whose expectations are asserted at end of scope. Free functions are out of scope — the library steers users to trait-based seams rather than pretending Rust has `with-redefs`.
+`mockable!` defines both the trait and a sibling mock struct. The mock exposes each method as a `pub` field of type `RefCell<Option<Return>>`; the trait impl panics on an unset slot. `provided!` is pure sugar for `*mock.method.borrow_mut() = Some(value);`. Return types must be `Clone` (slots are cloned on each call).
+
+The `as ClockMock` form avoids needing a `paste`-style ident-synthesis dependency — users explicitly name the mock. Deferred to a later iteration: call-count verification, argument matchers, `&mut self` methods, generic methods.
 
 ## Backgrounds
 
