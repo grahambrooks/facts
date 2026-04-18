@@ -1,0 +1,36 @@
+CLAUDE.md
+  9a62bbc4857eef86 1-33
+tests/groups.rs
+  9a62bbc4857eef86 1-24
+design.md
+  9a62bbc4857eef86 1-106
+Cargo.toml
+  9a62bbc4857eef86 1-10
+tests/smoke.rs
+  9a62bbc4857eef86 1-113
+src/lib.rs
+  9a62bbc4857eef86 1-196
+src/checkers.rs
+  9a62bbc4857eef86 1-303
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.0",
+  "base_commit_sha": "7a2518b55faab4345b9abd15052cc5d58095cb0a",
+  "prompts": {
+    "9a62bbc4857eef86": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4224b454-1afb-4f48-8bab-2cd70dde2ae3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Graham Brooks",
+      "messages": [],
+      "total_additions": 839,
+      "total_deletions": 13,
+      "accepted_lines": 825,
+      "overriden_lines": 1,
+      "messages_url": "https://usegitai.com/cas/499d386f32589003e904db7179c53fb0a2445b96a68f626c2e03570de8d352a8"
+    }
+  }
+}
