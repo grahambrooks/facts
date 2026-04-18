@@ -37,17 +37,19 @@ So `=> 4` and `=> roughly(1.414, 0.001)` go through the same path. Built-ins pla
 
 ## Tabular facts
 
-Midje's tabular form becomes a proc-macro over a literal table:
+Midje's tabular form with the body template first, then the header tuple, then rows:
 
 ```rust
-tabular! { "addition",
-    |a, b, sum|
-    |  1,  2,   3 |
-    |  4,  5,   9 |
-    | -1,  1,   0 |
-    => fact!(a + b => sum)
+tabular! {
+    fact!(a + b => sum),
+    (a, b, sum),
+    (1, 2, 3),
+    (4, 5, 9),
+    (-1, 1, 0),
 }
 ```
+
+The original `|a, b, sum|` row delimiters from the first sketch conflict with Rust's closure grammar in `:expr` capture, so the shipped form uses parenthesized tuples throughout. Each row expands to `{ let (a, b, sum) = (1, 2, 3,); fact!(a + b => sum); }`. Homogeneous column types are required (rust type-checks the generated `let` bindings). Single-column tables need a trailing comma in the header: `(n,)`.
 
 ## Mocking via `provided`
 

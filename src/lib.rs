@@ -22,7 +22,7 @@ pub mod checkers;
 
 pub mod prelude {
     pub use crate::checkers::*;
-    pub use crate::{all_of, any_of, fact, facts, refute, Checker, Outcome};
+    pub use crate::{all_of, any_of, fact, facts, refute, tabular, Checker, Outcome};
 }
 
 #[derive(Debug, Clone)]
@@ -151,6 +151,48 @@ macro_rules! all_of {
     ($c:expr $(,)?) => { $c };
     ($a:expr, $($rest:expr),+ $(,)?) => {
         $crate::checkers::AllOf::new($a, $crate::all_of!($($rest),+))
+    };
+}
+
+/// Run the same fact template over a table of rows.
+///
+/// Shape: `tabular!(template, (headers,), (row,), (row,), ...)`.
+/// The template is any expression that references the header names;
+/// each row is a tuple of values bound positionally to the headers.
+///
+/// ```no_run
+/// use facts::prelude::*;
+///
+/// #[test]
+/// fn addition_table() {
+///     tabular! {
+///         fact!(a + b => sum),
+///         (a, b, sum),
+///         (1, 2, 3),
+///         (4, 5, 9),
+///         (-1, 1, 0),
+///     }
+/// }
+/// ```
+///
+/// All rows must share column count and types — the template expands
+/// to one `let (headers,) = (row,);` binding per row, so a type
+/// mismatch is a normal compile error. Single-column tables require a
+/// trailing comma in the header tuple: `(n,)`.
+#[macro_export]
+macro_rules! tabular {
+    (
+        $body:expr,
+        $headers:tt
+        $(, ( $($val:expr),+ $(,)? ) )+
+        $(,)?
+    ) => {
+        $(
+            {
+                let $headers = ( $($val,)+ );
+                $body;
+            }
+        )+
     };
 }
 
