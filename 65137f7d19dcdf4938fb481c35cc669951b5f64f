@@ -1,0 +1,24 @@
+README.md
+  9a62bbc4857eef86 1-138
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.0",
+  "base_commit_sha": "65137f7d19dcdf4938fb481c35cc669951b5f64f",
+  "prompts": {
+    "9a62bbc4857eef86": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4224b454-1afb-4f48-8bab-2cd70dde2ae3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Graham Brooks",
+      "messages": [],
+      "total_additions": 138,
+      "total_deletions": 0,
+      "accepted_lines": 179,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/914f890b0e16f46c2f2456e7e1932dc358dd86d0c6c705dc0c2b3d1d0f3bdc59"
+    }
+  }
+}
