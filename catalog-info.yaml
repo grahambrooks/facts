@@ -1,0 +1,25 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: facts
+  title: facts
+  description: Midje-inspired testing for Rust with left-to-right fact assertions.
+  annotations:
+    github.com/project-slug: grahambrooks/facts
+    backstage.io/source-location: url:https://github.com/grahambrooks/facts
+  tags:
+    - rust
+    - testing
+    - assertions
+    - midje
+  links:
+    - title: Repository
+      url: https://github.com/grahambrooks/facts
+    - title: README
+      url: https://github.com/grahambrooks/facts/blob/main/README.md
+    - title: Design notes
+      url: https://github.com/grahambrooks/facts/blob/main/design.md
+spec:
+  type: library
+  lifecycle: experimental
+  owner: user:default/grahambrooks
