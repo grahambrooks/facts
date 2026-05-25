@@ -72,8 +72,7 @@ macro_rules! fact {
     ($label:literal, $actual:expr => $expected:expr $(,)?) => {{
         let __facts_actual = $actual;
         let __facts_expected = $expected;
-        let __facts_outcome =
-            $crate::Checker::check(&__facts_expected, &__facts_actual);
+        let __facts_outcome = $crate::Checker::check(&__facts_expected, &__facts_actual);
         if !__facts_outcome.passed {
             panic!(
                 "\nfact failed at {}:{}\n  label: {}\n  expression: {} => {}\n  {}\n",
@@ -89,8 +88,7 @@ macro_rules! fact {
     ($actual:expr => $expected:expr $(,)?) => {{
         let __facts_actual = $actual;
         let __facts_expected = $expected;
-        let __facts_outcome =
-            $crate::Checker::check(&__facts_expected, &__facts_actual);
+        let __facts_outcome = $crate::Checker::check(&__facts_expected, &__facts_actual);
         if !__facts_outcome.passed {
             panic!(
                 "\nfact failed at {}:{}\n  expression: {} => {}\n  {}\n",

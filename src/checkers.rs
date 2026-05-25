@@ -73,10 +73,7 @@ where
         if slice.iter().any(|x| x == &self.needle) {
             Outcome::pass()
         } else {
-            Outcome::fail(format!(
-                "{:?} does not contain {:?}",
-                actual, self.needle
-            ))
+            Outcome::fail(format!("{:?} does not contain {:?}", actual, self.needle))
         }
     }
 }
