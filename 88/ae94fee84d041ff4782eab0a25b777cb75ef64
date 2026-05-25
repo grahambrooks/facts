@@ -1,0 +1,21 @@
+Makefile
+  s_f587391c50dc5c::t_13a99cae7b86d2 1-67
+.github/workflows/release.yml
+  s_f587391c50dc5c::t_7698f73430e439 1-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "88ae94fee84d041ff4782eab0a25b777cb75ef64",
+  "prompts": {},
+  "sessions": {
+    "s_f587391c50dc5c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0a8297a4-3934-465b-94b6-bbc9c3da6a14",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Graham Brooks <graham@grahambrooks.com>"
+    }
+  }
+}
