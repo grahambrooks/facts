@@ -1,0 +1,23 @@
+README.md
+  s_f587391c50dc5c::t_aa4a2c2268361b 20,24
+Cargo.lock
+  ai_agent 6
+Cargo.toml
+  s_f587391c50dc5c::t_e8d1959c847595 2,10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "e989ae032d75201e98c911d218abf553f59eaebf",
+  "prompts": {},
+  "sessions": {
+    "s_f587391c50dc5c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0a8297a4-3934-465b-94b6-bbc9c3da6a14",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Graham Brooks <graham@grahambrooks.com>"
+    }
+  }
+}
