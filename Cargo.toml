@@ -1,5 +1,5 @@
 [package]
-name = "facts"
+name = "fact-tests"
 version = "0.0.1"
 edition = "2021"
 description = "Midje-inspired testing for Rust. Assertions as facts."
@@ -7,4 +7,5 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/grahambrooks/facts"
 
 [lib]
+name = "facts"
 path = "src/lib.rs"

@@ -17,11 +17,11 @@ Every `fact!` is a plain assertion — `cargo test`, filters, `--nocapture`, and
 
 ## Install
 
-Add to `Cargo.toml`:
+Add to `Cargo.toml`. The crate is published as `fact-tests` (the `facts` name was taken on crates.io); use Cargo's `package =` rename so imports stay `use facts::...`:
 
 ```toml
 [dev-dependencies]
-facts = "0.0.1"
+facts = { package = "fact-tests", version = "0.0.1" }
 ```
 
 ## The arrow
