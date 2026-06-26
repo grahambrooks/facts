@@ -1,0 +1,25 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: "https://github.com/pre-commit/pre-commit-hooks"
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+  - repo: "https://github.com/gitleaks/gitleaks"
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
+        name: Detect hardcoded secrets
+        description: Detect hardcoded secrets using Gitleaks
+        entry: gitleaks git --pre-commit --redact --staged --verbose
+        language: golang
+        pass_filenames: false
+  - repo: "https://github.com/betterleaks/betterleaks"
+    rev: v1.5.0
+    hooks:
+      - id: betterleaks
+        name: Detect secrets
+        entry: betterleaks git --pre-commit --redact --staged --verbose
