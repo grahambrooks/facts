@@ -1,0 +1,26 @@
+Cargo.toml
+  s_b02e968187a04d::t_58acf2c7daa50f 3
+  s_b02e968187a04d::t_e04b239eb57e43 4-5
+.github/workflows/rust.yml
+  s_b02e968187a04d::t_474f9cb981754b 23-36
+src/lib.rs
+  s_b02e968187a04d::t_042d51d40ef00c 27
+Cargo.lock
+  s_b02e968187a04d::t_e178101acec7ce 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "328a0521ed362d376c840e9d50c26309f7101454",
+  "prompts": {},
+  "sessions": {
+    "s_b02e968187a04d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f8aecab9-f276-4eb1-be7b-5c2cc7dce05a",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Graham Brooks <graham@grahambrooks.com>"
+    }
+  }
+}
