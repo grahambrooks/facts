@@ -24,7 +24,7 @@ pub mod mock;
 pub mod prelude {
     pub use crate::checkers::*;
     pub use crate::{
-        all_of, any_of, fact, facts, mockable, provided, refute, tabular, Checker, Outcome,
+        Checker, Outcome, all_of, any_of, fact, facts, mockable, provided, refute, tabular,
     };
 }
 
