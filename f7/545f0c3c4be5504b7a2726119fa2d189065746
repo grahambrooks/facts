@@ -1,0 +1,21 @@
+.github/workflows/rust.yml
+  s_5ca8b6a3be5cd3::t_8e73bf7c2021b0 31-36,38-40,43-44,47-48
+rust-toolchain.toml
+  s_5ca8b6a3be5cd3::t_c27ac12bc19fd3 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "f7545f0c3c4be5504b7a2726119fa2d189065746",
+  "prompts": {},
+  "sessions": {
+    "s_5ca8b6a3be5cd3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c3588e38-9436-46fe-9481-eb714ec8ad56",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Graham Brooks <graham@grahambrooks.com>"
+    }
+  }
+}
