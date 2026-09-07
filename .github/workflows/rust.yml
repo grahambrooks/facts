@@ -28,9 +28,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v7
+    # Must match `rust-version` in Cargo.toml, which tracks latest stable.
+    #
+    # Pinned rather than `@stable`, and that is the whole point of the job: when
+    # stable moves ahead, this keeps building at the version the manifest still
+    # claims, so anything that raises the real floor fails here loudly instead of
+    # quietly turning `rust-version` into a fiction.
     - name: Install pinned toolchain
-      uses: dtolnay/rust-toolchain@1.85.0
+      uses: dtolnay/rust-toolchain@1.98.1
+    # rust-toolchain.toml would otherwise override the pin above and silently
+    # turn this job into a copy of `build`. RUSTUP_TOOLCHAIN outranks the file.
     - name: Build
       run: cargo build --verbose
+      env:
+        RUSTUP_TOOLCHAIN: 1.98.1
     - name: Run tests
       run: cargo test --verbose
+      env:
+        RUSTUP_TOOLCHAIN: 1.98.1

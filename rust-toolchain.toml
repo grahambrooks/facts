@@ -1,0 +1,20 @@
+# The toolchain every build uses, explicitly.
+#
+# Added after CI failed on a declaration alone: Cargo.toml tracks latest stable
+# (Renovate's "language runtime" rule keeps `rust-version` current), it reached
+# 1.98.1, and the `ubuntu-24.04` runner image still shipped rustc 1.98.0. Cargo
+# refused before compiling a line — `rustc 1.98.0 is not supported by the
+# following package: fact-tests@0.0.2 requires rustc 1.98.1`.
+#
+# That is the standing cost of an MSRV policy of "tracks latest stable": any
+# builder image lagging by one release stops building. The fix is to stop
+# depending on what a runner happens to have. rustup reads this file and
+# installs the named toolchain on demand, so CI, the release job and a
+# developer's laptop all compile with the same compiler.
+#
+# Keep `channel` in step with `rust-version` in Cargo.toml. Renovate manages
+# both in one group, so they move together.
+
+[toolchain]
+channel = "1.98.1"
+components = ["rustfmt", "clippy"]
