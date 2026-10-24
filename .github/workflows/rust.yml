@@ -35,14 +35,14 @@ jobs:
     # claims, so anything that raises the real floor fails here loudly instead of
     # quietly turning `rust-version` into a fiction.
     - name: Install pinned toolchain
-      uses: dtolnay/rust-toolchain@1.98.1
+      uses: dtolnay/rust-toolchain@1.99.0
     # rust-toolchain.toml would otherwise override the pin above and silently
     # turn this job into a copy of `build`. RUSTUP_TOOLCHAIN outranks the file.
     - name: Build
       run: cargo build --verbose
       env:
-        RUSTUP_TOOLCHAIN: 1.98.1
+        RUSTUP_TOOLCHAIN: 1.99.0
     - name: Run tests
       run: cargo test --verbose
       env:
-        RUSTUP_TOOLCHAIN: 1.98.1
+        RUSTUP_TOOLCHAIN: 1.99.0
