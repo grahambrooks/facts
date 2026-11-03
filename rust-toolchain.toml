@@ -16,5 +16,6 @@
 # both in one group, so they move together.
 
 [toolchain]
-channel = "1.99.0"
+# Keep `channel` identical to `rust-version` in Cargo.toml; CI fails if they drift.
+channel = "1.99.1"
 components = ["rustfmt", "clippy"]
