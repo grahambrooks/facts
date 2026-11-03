@@ -13,16 +13,15 @@ build:  ## Compile the library
 	$(CARGO) build
 
 .PHONY: test
-test:  ## Run unit, integration, and doc tests
-	$(CARGO) test
+test:  ## Run unit, integration, and doc tests (the CI test line)
+	$(CARGO) test --workspace --all-features --locked
 
 .PHONY: doc-test
 doc-test:  ## Run just the doctests
 	$(CARGO) test --doc
 
 .PHONY: check
-check:  ## Type-check without producing artifacts
-	$(CARGO) check --all-targets
+check: fmt-check lint test  ## The pre-push gate: the same commands as the CI build job (rust.yml)
 
 .PHONY: fmt
 fmt:  ## Format sources with rustfmt
@@ -30,18 +29,25 @@ fmt:  ## Format sources with rustfmt
 
 .PHONY: fmt-check
 fmt-check:  ## Verify sources are formatted
-	$(CARGO) fmt --all -- --check
+	$(CARGO) fmt --all --check
+
+.PHONY: lint
+lint:  ## Lint with clippy, warnings as errors (the CI clippy line)
+	$(CARGO) clippy --workspace --all-targets --all-features --locked -- -D warnings
 
 .PHONY: clippy
-clippy:  ## Lint with clippy (warnings = errors)
-	$(CARGO) clippy --all-targets --all-features -- -D warnings
+clippy: lint  ## Alias for lint
+
+.PHONY: hooks
+hooks:  ## Install the git hooks (prek: pre-commit and pre-push)
+	prek install
 
 .PHONY: clean
 clean:  ## Remove build artifacts
 	$(CARGO) clean
 
 .PHONY: pre-commit
-pre-commit: fmt-check clippy build test  ## Format / lint / build / test gate run before committing
+pre-commit: check  ## Alias for check
 
 .PHONY: version
 version:  ## Print the version that would be released
